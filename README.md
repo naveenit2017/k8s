@@ -40,7 +40,42 @@ In kubernetes to run the pods we require a continer runtime,hence we are using c
 2.Kubelet: Kubelet is responsble to run the pods(like dockershim) based on the scheduler inputs, If pod is not working it will restart the pod and give response back to the API server,even if is not working create the new pods.
 3.Kube-proxy:It will provide the network internally communicatins with pods and it will generates the ip address as well as hold the ip address list also.
 
+To practice K8s:..
+------------------
+Prerequiste:
+1.minikube,K3S,kind(k8s in Docker) and mickrok8s.
+2.kubectl
+3.docker
 
+Docker --> Container
+K8S ---> Pod -->containers.
+Note: In the docker to run we will pass all the arguments in command line only.
+Pod is described a defination of how to run a container in k8s.
+K8s everything will be YAML files.
+The containers information will be available in pod.yml file.
+In kuberenets everything will be mention yml files only.
+..why pod having multiple containers.
+      few advantages:
+       i.Shared Network.
+       ii.Shared Storage.
+       
+#Pod --> 1 or group of containers.
+Pod --container-->Cluster IP, k8s allocate IPs through kube-proxy .
+pod is a wrapper of container.
+
+#Kubectl to communicate through commandline to K8s cluster
+Deploying frost Application :
+-----------------------------
+#minikube start(By default Docker driver will use to create the K8S cluster.
+#Minikube -->single node k8s cluster with one Master and slave node.
+#kubectl get nodes (here we come to know the cluster information)
+
+1.creating pod.yml from official site.
+https://kubernetes.io/docs/concepts/workloads/pods/
+#deploying the pod.yml
+#kubectl create -f pod.yml
+#kubectl get pods
+#kubectl get pods -o wide
 
 # k8s
 https://app.smartdraw.com/editor.aspx?templateId=5375d76a-18f5-49fc-bb02-78cfb46beb7e&flags=128#depoId=56018990&credID=-61926548
