@@ -108,5 +108,21 @@ https://kubernetes.io/docs/concepts/workloads/pods/
 #kubectl get pods
 #kubectl get pods -o wide
 
+ kubectl create -f pod.yml
+       kubectl get pods //get the pods information
+       kubectl get svc  //will get the default svc
+       kubectl get deploy //if any depolyments are there it will give.
+       kubectl get pods -o wide //It will display the pod information.
+       kubectl logs nginx
+       kubectl describe pod nginx //
+
+    #Now just take the pod ip and connect from the minikube.
+       minikube ssh
+       curl 10.244.0.3(pod ip)
+       it will connect the nginx application from the minikiube machine.
+#As of now pod is created then what next we need to do ?Auto scaling and auto healing will get through deployment. 
+ 
+
+
 # k8s
 https://app.smartdraw.com/editor.aspx?templateId=5375d76a-18f5-49fc-bb02-78cfb46beb7e&flags=128#depoId=56018990&credID=-61926548
