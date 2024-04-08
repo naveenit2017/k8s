@@ -46,6 +46,37 @@ Prerequiste:
 1.minikube,K3S,kind(k8s in Docker) and mickrok8s.
 2.kubectl
 3.docker
+Installations teps on Ubuntu:
+-----------------------------
+1.kubectl installation.
+    1 sudo apt-get update
+    2  sudo apt-get install -y kubectl
+    3  kubectl version --client
+    4  sudo snap install kubectl
+    5  sudo snap install kubectl --classic
+    6  kubectl version --client
+ 2.Docker installation.
+  sudo apt update
+    sudo apt install apt-transport-https ca-certificates curl software-properties-common
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+    sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+    sudo apt update
+    sudo apt install docker-ce
+    sudo systemctl status docker
+    sudo usermod -aG docker $USER
+    docker --version
+    
+3.minikube
+sudo apt update
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+sudo chmod +x minikube-linux-amd64
+sudo chmod +x minikube-linux-amd64
+sudo usermod -aG docker $USER && newgrp docker
+minikube start
+minikube status
+kubectl get pods
+kubectl get nodes
+-----------------------------------------------------------------------------------------------------------
 
 Docker --> Container
 K8S ---> Pod -->containers.
@@ -64,7 +95,7 @@ Pod --container-->Cluster IP, k8s allocate IPs through kube-proxy .
 pod is a wrapper of container.
 
 #Kubectl to communicate through commandline to K8s cluster
-Deploying frost Application :
+Deploying first Application :
 -----------------------------
 #minikube start(By default Docker driver will use to create the K8S cluster.
 #Minikube -->single node k8s cluster with one Master and slave node.
