@@ -120,9 +120,26 @@ https://kubernetes.io/docs/concepts/workloads/pods/
        minikube ssh
        curl 10.244.0.3(pod ip)
        it will connect the nginx application from the minikiube machine.
-#As of now pod is created then what next we need to do ?Auto scaling and auto healing will get through deployment. 
- 
+#As of now pod is created then what next we need to do ?
 
+--> Auto scaling and auto healing will get through deployment. 
+Kubernetes Deployment:
+----------------------
+--Pod is a wrapper of container.
+--To run the container will run the docker commands as arguments in commandline.
+--Pod is a running specifiaction of container,pod wil have the one or more containers,because the actual container is depending on other one like LB,Aws  
+      related info as well as network sharable and also storage also.
+ --In pod everything will mentain in yml specifiaction files.
+Auto Healing:
+--------------
+-Auto Healing we can acheive through deplyoments with zero down time,that it won't possible through container or pod.
+
+-will mention deployment yml file kind argument insted of pod will use deployment.
+The flow of deployment
+ -->Deploy.yml--->Replication Set(Control Manager)number of replicas----->pod.
+ -->RS will provide the auto healing if the pod is down or termintaed before going to down it will create new pod.
+ --kubectl get pod
+  --kubectl get deploy 
 
 # k8s
 https://app.smartdraw.com/editor.aspx?templateId=5375d76a-18f5-49fc-bb02-78cfb46beb7e&flags=128#depoId=56018990&credID=-61926548
