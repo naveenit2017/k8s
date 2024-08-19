@@ -46,11 +46,11 @@ Prerequiste:
 1.minikube,K3S,kind(k8s in Docker) and mickrok8s.
 2.kubectl
 3.docker
-Installations teps on Ubuntu:
+Installations steps on Ubuntu:
 -----------------------------
 1.kubectl installation.
     1 sudo apt-get update
-    2  sudo apt-get install -y kubectl
+    2  kubectl version --client
     3  kubectl version --client
     4  sudo snap install kubectl
     5  sudo snap install kubectl --classic
@@ -97,7 +97,7 @@ pod is a wrapper of container.
 #Kubectl to communicate through commandline to K8s cluster
 Deploying first Application :
 -----------------------------
-#minikube start(By default Docker driver will use to create the K8S cluster.
+#minikube start(By default Docker driver will use to create the K8S cluster)
 #Minikube -->single node k8s cluster with one Master and slave node.
 #kubectl get nodes (here we come to know the cluster information)
 
