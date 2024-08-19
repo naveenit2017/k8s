@@ -144,14 +144,15 @@ The flow of deployment
   kubectl get pods
   kubectl delete pod nginx-deployment-86dcfdf4c6-bl9p8
   kubectl get pods -o wide
-  kubectl describe pods -o wide
+  kubectl describe pod nginx
   kubectl describe pods
   kubectl get all
-  minikube ssh //take nginx pod ip -->curl ip
+  minikube ssh //take nginx pod ip -->curl ip   //we are able to connect from only local machine.
+  We can achieve replication by using deployment.
   kubectl get rs
   kubectl svc
   kubectl get svc
- -->RS will provide the auto healing if the pod is down or termintaed before going to down it will create new pod.
+ -->RS(Cloud Controller) will provide the auto healing if the pod is down or termintaed before going to down it will create new pod.
 
 # k8s
 https://app.smartdraw.com/editor.aspx?templateId=5375d76a-18f5-49fc-bb02-78cfb46beb7e&flags=128#depoId=56018990&credID=-61926548
