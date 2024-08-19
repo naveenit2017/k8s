@@ -1,1 +1,11 @@
 #useful k8s commands.
+sudo systemctl status docker
+minikube start
+minikube status
+
+kubectl create -f first-deployment.yml
+kubectl get pods -o wide
+kubectl decribe pod nginx
+kubectl desribe pods
+kubectl get all //list all resources.
+kubectl get pods -w //live status of the pods.
