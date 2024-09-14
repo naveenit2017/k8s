@@ -7,19 +7,11 @@ metadata:
     app: multi-container-app
 spec:
   containers:
-    - name: nginx-container
-      image: nginx:latest
-      ports:
-        - containerPort: 80
-      resources:
-        limits:
-          memory: "256Mi"
-          cpu: "500m"
-    - name: redis-container
-      image: redis:latest
-      ports:
-        - containerPort: 6379
-      resources:
-        limits:
-          memory: "128Mi"
-          cpu: "250m"
+    - name: ubuntu-container
+      image: ubuntu:latest
+      command: ["/bin/bash","-c","while true;do echo c1;sleep 5;done"]
+      
+    - name: ubuntu-container
+      image: ubuntu:latest
+      command: ["/bin/bash","-c","while true;do echo c1;sleep 5;done"]
+     
