@@ -7,11 +7,11 @@ metadata:
     app: multi-container-app
 spec:
   containers:
-    - name: ubuntu-container
+    - name: ubuntu-container1
       image: ubuntu:latest
       command: ["/bin/bash","-c","while true;do echo c1;sleep 5;done"]
       
-    - name: ubuntu-container
+    - name: ubuntu-container2
       image: ubuntu:latest
       command: ["/bin/bash","-c","while true;do echo c1;sleep 5;done"]
      
