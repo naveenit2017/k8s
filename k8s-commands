@@ -2,7 +2,9 @@
 sudo systemctl status docker
 minikube start
 minikube status
-
+Kubectl create -f pod.yml
+kubectl get pods 
+kubectl get pods -n my-ns
 kubectl create -f first-deployment.yml
 kubectl get pods -o wide
 kubectl decribe pod nginx
@@ -10,3 +12,4 @@ kubectl desribe pods
 kubectl delete pod nginx
 kubectl get all //list all resources.
 kubectl get pods -w //live status of the pods.
+kubectl get pods -n my-ns -w //-n namespace
