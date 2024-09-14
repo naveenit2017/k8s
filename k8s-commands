@@ -13,3 +13,4 @@ kubectl delete pod nginx
 kubectl get all //list all resources.
 kubectl get pods -w //live status of the pods.
 kubectl get pods -n my-ns -w //-n namespace
+kubectl logs my-pod
