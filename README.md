@@ -156,3 +156,72 @@ The flow of deployment
 
 # k8s
 https://app.smartdraw.com/editor.aspx?templateId=5375d76a-18f5-49fc-bb02-78cfb46beb7e&flags=128#depoId=56018990&credID=-61926548.
+
+Labels & Selectors:
+-------------------
+In Kubernetes, labels and selectors are mechanisms used to identify and organize resources. They play a key role in grouping, filtering, and managing objects like Pods, Services, and Deployments in a Kubernetes cluster.
+
+Labels:
+-------
+Labels are key-value pairs that are attached to Kubernetes objects such as Pods, Services, Nodes, and more. Labels provide identifying metadata that can be used for selection, grouping, and organization of resources. They are arbitrary, meaning you can assign any key-value pair to suit your use case.
+ex:
+----
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod   //pod-name
+  labels:
+    app: web-server  //application name
+    environment: production
+spec:
+  containers:
+    - name: nginx
+      image: nginx
+  ex:selectors:
+  apiVersion: v1
+kind: Service
+metadata:
+  name: web-server-service
+spec:
+  selector:
+    app: web-server
+    environment: production
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+
+# kubectl get pods --show-labels
+
+Node Selector:-
+---------------
+In Kubernetes, a node selector is used to constrain Pods to specific nodes based on node labels. This is useful when you want to ensure that a Pod runs only on nodes that meet certain criteria, such as nodes with specific hardware or software characteristics.      
+
+#kubectl get nodes --show-labels
+ ReplicationController:
+ ----------------------
+A ReplicationController in Kubernetes ensures that a specified number of pod replicas are running at any given time.
+It is responsible for maintaining the desired state of your Pods and ensuring that the specified number of replicas are always available.
+
+While ReplicationControllers are still supported, they have largely been replaced by ReplicaSets in modern Kubernetes deployments, which offer more features and flexibility. However, understanding ReplicationControllers can still be useful for understanding the evolution of Kubernetes and for working with legacy configurations.
+eg:
+--
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: nginx-rc
+spec:
+  replicas: 3
+  selector:
+    app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+        - name: nginx-container
+          image: nginx:latest
+          ports:
+            - containerPort: 80
+A ReplicaSet in Kubernetes ensures that a specified number of pod replicas are running at any given time, similar to a ReplicationController. However, ReplicaSets provide more advanced features and flexibility compared to ReplicationControllers. ReplicaSets are commonly used with Deployments to manage rolling updates and rollbacks.
