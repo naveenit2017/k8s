@@ -225,3 +225,21 @@ spec:
           ports:
             - containerPort: 80
 A ReplicaSet in Kubernetes ensures that a specified number of pod replicas are running at any given time, similar to a ReplicationController. However, ReplicaSets provide more advanced features and flexibility compared to ReplicationControllers. ReplicaSets are commonly used with Deployments to manage rolling updates and rollbacks.
+
+Deployment:
+-----------
+In Kubernetes, a Deployment is a resource object that manages and automates the process of deploying and updating applications. It abstracts much of the complexity around managing ReplicaSets and Pods by providing declarative updates, rolling updates, rollbacks, and scaling.
+Key Features of a Deployment:
+-----------------------------
+1.Declarative Updates: Define the desired state of your application (number of replicas, container version, etc.), and Kubernetes will 
+---------------------
+ensure that the actual state matches it.
+Rolling Updates: Allows you to update the application (e.g., new container version) without downtime by gradually replacing Pods.
+---------------
+Rollbacks: If something goes wrong during an update, you can easily rollback to a previous version.
+----------
+Self-healing: If Pods fail or go down, the Deployment controller ensures that new Pods are automatically created to maintain the desired 
+-------------
+replica count.
+Scaling: Easily scale your application up or down by changing the number of replicas in the Deployment.
+-------
