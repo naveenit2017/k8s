@@ -1,4 +1,5 @@
-#useful k8s commands.
+#useful k8s commands:
+---------------------
 sudo systemctl status docker
 minikube start
 minikube status
@@ -15,4 +16,11 @@ kubectl get pods -w //live status of the pods.
 kubectl get pods -n my-ns -w //-n namespace
 kubectl logs my-pod
 kubectl get nodes --show-labels
+kubectl set image deployment/ubuntu-deployment ubuntu-container=ubuntu:20.04
+kubectl scale deployment ubuntu-deployment --replicas=5
+kubectl scale deployment ubuntu-deployment --replicas=2
+kubectl rollout undo deployment/ubuntu-deployment
+kubectl rollout status deployment/ubuntu-deployment
+kubectl rollout history deployment/ubuntu-deployment
+
 
