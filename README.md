@@ -320,6 +320,65 @@ Resolution:-
 Verify the RoleBinding and ClusterRoleBinding configurations.
 Ensure the service account used by the pod has the required permissions.
 
- 
+Kubernetes StatefulSets:
+------------------------
+Kubernetes StatefulSets are used to manage stateful applications, which require stable, unique network identities and persistent storage. Unlike Deployments, which are more suited for stateless applications, StatefulSets are designed to handle applications with persistent data.
+
+Kubernetes Resources:
+---------------------
+Deployments: Typically used for stateless applications. Deployments manage replicas of pods and ensure that the desired number of pod 
+-----------
+instances are running. They handle rolling updates and rollbacks seamlessly.
+Services: Provide load balancing and service discovery for stateless applications. They can distribute traffic across multiple instances.
+--------
+K8S Networking:
+--------------
+Kubernetes networking model is designed to provide a flexible, scalable, and consistent way for containers, pods, and services to communicate with each other. The networking model ensures that containers within a pod can communicate with each other and with other pods across the cluster seamlessly. It also provides mechanisms for exposing services to the outside world.
+
+Key Concepts in Kubernetes Networking:
+--------------------------------------
+Pod Networking:
+---------------
+Each Pod Gets a Unique IP Address: Every pod in a Kubernetes cluster gets its own IP address, which allows containers within the pod to communicate with each other and with other pods using standard networking protocols.
+Container-to-Container Communication: Containers within the same pod can communicate with each other via localhost (127.0.0.1), while 
+------------------------------------
+containers in different pods communicate using the pod’s IP address.
+Cluster Networking:
+-------------------
+Flat Network: All pods can communicate with all other pods without Network Address Translation (NAT). This means there are no network boundaries within the cluster, allowing for direct communication between pods across different nodes.
+Service Networking:
+------------------
+ClusterIP Services:- 
+-------------------------
+Services within the cluster are assigned a stable IP address and DNS name. These services use kube-proxy to route 
+traffic to the appropriate pod endpoints based on the service selector.
+
+NodePort Services: Allows exposing a service on a specific port on each node in the cluster. This makes the service accessible from outside the cluster by hitting any node’s IP address and the NodePort.
+LoadBalancer Services: Provisioned through an external load balancer provided by cloud providers. This service is exposed via a public IP address that routes traffic to the nodes and services in the cluster.
+Ingress: Provides HTTP and HTTPS routing to services based on URL paths and hostnames. It can be used to expose multiple services through a single external IP address.
+
+Network Policies
+----------------
+Controlling Traffic: Kubernetes Network Policies allow you to define rules for controlling the traffic between pods and services. You can specify which pods can communicate with each other and which cannot.
+DNS:
+---
+Service Discovery: 
+------------------
+Kubernetes provides built-in DNS for service discovery. Each service is assigned a DNS name, and DNS resolution is handled by CoreDNS (or kube-dns in some clusters). Pods can use these DNS names to discover and connect to services.
+Overlay Networks:
+----------------
+Network Plugins: Kubernetes supports various networking plugins (CNI) that implement overlay networks, such as Calico, Flannel, and Weave. These plugins provide different capabilities for network policies, IP address management, and network segmentation.
+
+Service:
+-----------
+In Kubernetes, a Service is an abstraction that defines a logical set of pods and a policy by which to access them. Services provide a stable network endpoint and load balancing for accessing a set of pods. Here’s an overview of different types of services and examples for each:
+Types of Kubernetes Services:
+-----------------------------
+ClusterIP: Exposes the service on an internal IP within the cluster. This is the default service type and is used for communication between pods within the cluster.
+NodePort: Exposes the service on a static port on each node’s IP address. This allows access to the service from outside the cluster.
+LoadBalancer: Provisioned by cloud providers to create an external load balancer. This exposes the service to the outside world via a public IP address.
+
+Headless Service: Provides service discovery without load balancing. It’s used to allow direct communication with individual pods.
+
 
 
